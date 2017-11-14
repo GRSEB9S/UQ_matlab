@@ -1,0 +1,15 @@
+This package is tailored to compute results for paper 'Anchoored ANOVA Petrov-Galerkin projection schemes for linear stochastic structural dynamics', Author: Lin Gao, Christophe Audouze, Prasanth Nair. University of Toronto. 2015.
+
+The main routines (Monte Carlo simulation, gPC-Galerkin, GSD and AAPG) are contained in function main.m.
+
+The driveing functions beam.m and hex.m are used to set parameters for specific problem and compute solutions by calling main.m. Run beam.m would generate Figure 1-7. Run hex.m would generate Figure 9-10. Visulizaiton of the mesh for the hex shaped structure (Figure 8) was done in third-party software. 
+
+Scaling study (Figure 11) was done by running hex.m multiple times, save relevant data and plot, where GS_ord=1. Data are saved in errors_M20.mat and CPU_M20.mat.
+
+The mass(M), damping(C), (stochastic) stiffness(K) and forcing(F) matrices are loaded from geobeam.mat and geohex5.mat respectively. 
+
+For easy testing, default setting in hex.m and beam.m for Monte Carlo simulation sample size is 100. Results with relatively large number of sample size are provided. Default setting when generating figures is to use these results. See line 35-56 in hex.m and line 47-48 in beam.m for details. Consider the following ways to save time in testing:
+For Monte Carlo simulation: change sample size N.
+For Ghanem-Spanos(GS) method: set GS_ord to 1 instead of 2 or 3.
+For GSD method: set Kmodes = [5].
+For AAPG method: set AAPG_GS_ord = 1 instead of 2 in main.m. 
